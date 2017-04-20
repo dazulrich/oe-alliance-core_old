@@ -12,6 +12,9 @@ ALLOW_EMPTY_${PN} = "1"
 
 inherit deploy
 do_deploy() {
+    if [ -e boot.bin  ]; then
+    install -m 0644 boot.bin  ${DEPLOYDIR}/${MACHINEBUILD}_boot.bin
+    fi
     if [ -e rescue.bin  ]; then
     install -m 0644 rescue.bin  ${DEPLOYDIR}/${MACHINEBUILD}_rescue.bin
     fi
